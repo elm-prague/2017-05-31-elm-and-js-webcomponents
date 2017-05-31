@@ -1,21 +1,22 @@
 module App exposing (..)
 
-import Html exposing (Html, text, div, img)
-import Html.Attributes exposing (src)
+import Html exposing (Attribute, Html, input, text, div, node, em)
+import Html.Attributes exposing (attribute, src, value, class)
+import Html.Events exposing (on, onInput, targetValue)
+import Json.Decode as Json
 
 
 ---- MODEL ----
 
 
 type alias Model =
-    { message : String
-    , logo : String
+    { salutation : String
     }
 
 
 init : String -> ( Model, Cmd Msg )
 init path =
-    ( { message = "Your Elm App is working!", logo = path }, Cmd.none )
+    ( { salutation = "ElmPrague" }, Cmd.none )
 
 
 
@@ -23,23 +24,34 @@ init path =
 
 
 type Msg
-    = NoOp
+    = NewSalutation String
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
-    ( model, Cmd.none )
+    case msg of
+        NewSalutation salutation ->
+            ( { model | salutation = salutation }, Cmd.none )
 
 
 
 ---- VIEW ----
 
 
+onUpdateSalutation : Attribute Msg
+onUpdateSalutation =
+    on "update-salutation" <| (Json.map NewSalutation (Json.at [ "target", "_eventData" ] Json.string))
+
+
 view : Model -> Html Msg
 view model =
     div []
-        [ img [ src model.logo ] []
-        , div [] [ text model.message ]
+        [ div []
+            [ div [] [ em [] [ text "This is rendered using Elm" ] ]
+            , text "model.salutation: "
+            , input [ value model.salutation, onInput NewSalutation, class "elmInput" ] []
+            ]
+        , node "hello-element" [ attribute "salutation" model.salutation, onUpdateSalutation ] []
         ]
 
 

@@ -1,7 +1,11 @@
+import 'document-register-element';
 import './main.css'
-const logoPath = require('./logo.svg')
-const Elm = require('./App.elm')
 
+import HelloElement from './HelloElement';
+
+customElements.define('hello-element', HelloElement)
+
+const Elm = require('./App.elm')
 const root = document.getElementById('root')
 
-Elm.App.embed(root, logoPath)
+Elm.App.embed(root, '')

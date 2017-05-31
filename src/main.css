@@ -2,11 +2,28 @@ body {
   font-family: 'Source Sans Pro', 'Trebuchet MS', 'Lucida Grande', 'Bitstream Vera Sans', 'Helvetica Neue', sans-serif;
   font-size: 30px;
   margin: 0;
-  text-align: center;
   color: #293c4b;
 }
 
 img {
   margin: 20px 0;
   max-width: 200px;
+}
+
+.hello {
+  border: 1px solid red;
+  background: #ffeeee;
+  padding: 15px;
+  margin: 15px;
+}
+
+#root {
+  border: 1px solid green;
+  background: #eeffee;
+  padding: 15px;
+  margin: 15px;
+}
+
+.elmInput {
+  font-size: 30px;
 }
