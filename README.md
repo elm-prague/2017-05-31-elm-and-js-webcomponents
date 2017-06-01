@@ -1,4 +1,16 @@
+# [ElmPrague](https://www.meetup.com/ElmPrague/) [Meetup #3](https://www.meetup.com/ElmPrague/events/238590705/): Elm and JavaScript
+
+Repo about JSON encoders/decoders, ports, flags, and native modules and presentation by Štěpán Pilař & Bea Jakubcová is here: [EnerfisTeam/prague_elm_meetup_3](https://github.com/EnerfisTeam/prague_elm_meetup_3). Also there is a blog post by Štěpán about [Custom flags decoder in Elm](https://developing.enectiva.cz/2017/05/31/custom-flags-decoder-in-elm/).
+
+This repo demonstrates simple interoperation between Elm and JavaScript using [custom DOM elements](https://w3c.github.io/webcomponents/spec/custom/) created with [Web Components](https://www.webcomponents.org/).
+
+It's using [`document-register-element`](https://github.com/WebReflection/document-register-element) polyfill as a lightweight version of the W3C Custom Elements.
+
 This project is bootstrapped with [Create Elm App](https://github.com/halfzebra/create-elm-app).
+
+---
+
+## Create Elm App Info
 
 Below you will find some information on how to perform basic tasks.  
 You can find the most recent version of this guide [here](https://github.com/halfzebra/create-elm-app/blob/master/template/README.md).
