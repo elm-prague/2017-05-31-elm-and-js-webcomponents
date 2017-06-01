@@ -1,6 +1,6 @@
 module App exposing (..)
 
-import Html exposing (Attribute, Html, input, text, div, node, em)
+import Html exposing (Attribute, Html, br, input, text, div, node, em, h1)
 import Html.Attributes exposing (attribute, src, value, class)
 import Html.Events exposing (on, onInput, targetValue)
 import Json.Decode as Json
@@ -43,6 +43,11 @@ onUpdateSalutation =
     on "update-salutation" <| (Json.map NewSalutation (Json.at [ "target", "_eventData" ] Json.string))
 
 
+onSetSalutation : Attribute Msg
+onSetSalutation =
+    on "set-salutation" <| (Json.map NewSalutation (Json.at [ "target", "_eventData" ] Json.string))
+
+
 view : Model -> Html Msg
 view model =
     div []
@@ -50,6 +55,18 @@ view model =
             [ div [] [ em [] [ text "This is rendered using Elm" ] ]
             , text "model.salutation: "
             , input [ value model.salutation, onInput NewSalutation, class "elmInput" ] []
+            , br [] []
+            , node "hello-the-second"
+                [ attribute "salutation" (model.salutation ++ " ---------")
+                , onSetSalutation
+                ]
+                []
+            , h1 [] [ text "Hello H1" ]
+            , node "hello-the-second"
+                [ attribute "salutation" model.salutation
+                , onSetSalutation
+                ]
+                []
             ]
         , node "hello-element" [ attribute "salutation" model.salutation, onUpdateSalutation ] []
         ]
